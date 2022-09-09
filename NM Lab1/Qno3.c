@@ -5,50 +5,40 @@ b. Functional value at calculated root
 c. Required number of iterations
 */
 #include<stdio.h>
-#include<conio.h>
 #include<math.h>
-#include<stdlib.h>
-#define    f(x)    x*x*x - 2*x - 5
-void main()
-{
-	 float x0, x1, x2, f0, f1, f2, e;
-	 int step = 1, N;
-	 printf("\nEnter initial guesses:\n");
-	 scanf("%f%f", &x0, &x1);
-	 printf("Enter tolerable error:\n");
-	 scanf("%f", &e);
-	 printf("Enter maximum iteration:\n");
-	 scanf("%d", &N);
-	 printf("\nStep\t\tx0\t\tx1\t\tx2\t\tf(x2)\n");
-	 do
-	 {
-		  f0 = f(x0);
-		  f1 = f(x1);
-		  if(f0 == f1)
-		  {
-			   printf("Mathematical Error.");
-			   exit(1);
-		  }
-
-		  x2 = x1 - (x1 - x0) * f1/(f1-f0);
-		  f2 = f(x2);
-
-		  printf("%d\t\t%f\t%f\t%f\t%f\n",step,x0,x1,x2, f2);
-
-		  x0 = x1;
-		  f0 = f1;
-		  x1 = x2;
-		  f1 = f2;
-
-		  step = step + 1;
-
-		  if(step > N)
-		  {
-			   printf("Not Convergent.");
-			   exit(0);
-		  }
-	 }
-     while(fabs(f2)>e);
-	 printf("\nRoot is: %f", x2);
-	 getch();
+#include<conio.h>
+#define E 0.01
+float F(float x){
+	return cos(x)+2*sin(x)+x*x;
 }
+
+int main()
+{
+	int itr=1;
+	float x1,x2,x3,f1,f2,f3;
+	printf("Enter first initial guess: ");
+	scanf("%f",&x1);
+	printf("Enter second initial guess: ");
+	scanf("%f",&x2);
+	f1=F(x1);
+	f2=F(x2);
+	begin:
+	x3=(f2*x1-f1*x2)/(f2-f1);
+	f3=F(x3);
+		if(fabs((x3-x2)/x3)<E)
+      {
+			printf("\nRoot= %.2f",x3);
+			printf("\nFuction value= %.4f",F(x3));
+			printf("\nIteration steps= %d",itr);
+   }
+   else{
+         itr++;
+         	x1=x2;
+            f1=f2;
+            x2=x3;
+            f2=f3;
+            goto begin;
+         }
+      return 0;
+}
+

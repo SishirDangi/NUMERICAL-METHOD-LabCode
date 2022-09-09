@@ -7,50 +7,37 @@ c. Required number of iterations
 #include<stdio.h>
 #include<conio.h>
 #include<math.h>
-#include<stdlib.h>
-#define    f(x)    3*x - cos(x) -1
-#define   g(x)   3 + sin(x)
-
-void main(){
-	 float x0, x1, f0, f1, g0, e;
-	 int step = 1, N;
-	 printf("\nEnter initial guess:\n");
-	 scanf("%f", &x0);
-	 printf("Enter tolerable error:\n");
-	 scanf("%f", &e);
-	 printf("Enter maximum iteration:\n");
-	 scanf("%d", &N);
-
-	 printf("\nStep\t\tx0\t\tf(x0)\t\tx1\t\tf(x1)\n");
-	 do
-	 {
-		  g0 = g(x0);
-		  f0 = f(x0);
-		  if(g0 == 0.0)
-		  {
-			   printf("Mathematical Error.");
-			   exit(0);
-		  }
-
-
-		  x1 = x0 - f0/g0;
-
-
-		  printf("%d\t\t%f\t%f\t%f\t%f\n",step,x0,f0,x1,f1);
-		  x0 = x1;
-
-		  step = step+1;
-
-		  if(step > N)
-		  {
-			   printf("Not Convergent.");
-			   exit(0);
-		  }
-
-		  f1 = f(x1);
-
-	 }while(fabs(f1)>e);
-
-	 printf("\nRoot is: %f", x1);
-	 getch();
+float f(float x){
+	return 3*x - cos(x) -1;
 }
+float fd(float x){
+	return 3 + sin(x);
+}
+int main()
+{
+   int itr=1;
+   float xi, x1, fxi, fdxi, root, e;
+   printf("\nEnter the initial value:");
+   scanf("%f",&xi);
+   printf("Enter tolerable error:");
+   scanf("%f",&e);
+   begin:
+   fxi=f(xi);
+   fdxi=fd(xi);
+   x1=xi-(fxi/fdxi);  
+   if((fabs(x1-xi)/x1)<e)
+   {
+   	
+   	printf("\nRoot=%f",x1);
+      printf("\nFuction value= %f",f(x1));
+      printf("\nIteration steps= %d",itr);
+   }
+   else
+   {
+   	xi=x1;
+   	fxi=f(x1);
+      itr ++;
+      goto begin;
+      }
+   getch();
+ }

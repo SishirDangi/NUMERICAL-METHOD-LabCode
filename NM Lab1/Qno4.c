@@ -9,26 +9,36 @@ c. Required number of iterations
 #include<stdlib.h>
 #include<math.h>
 #include<conio.h>
-#define G(x) (a3*x*x*x+a2*x*x+a0)/(-a1)
-float a0,a1,a2,a3;
+#define E 0.005
+float f(float x)
+{
+    return (x*x*x-x-5);
+}
+float g(float x)
+{
+    return pow((x + 5), (2.0 / 5.0));
+}
 int main()
 {
-float x0,x1,E,Er;
-printf("Enter cofficients a3 ,a2,a1 and a0\n"); 
-scanf("%f%f%f%f",&a3,&a2,&a1,&a0); 
-printf("Enter 2 initial guess and E\n"); 
-scanf("%f%f",&x0,&E);
-while(1)
-{
-x1 =G(x0);
-Er=(x1-x0)/x1;
-if(fabs(Er) < E)
-{
-	printf("Root=%f\n",x1);
-	break;
-}
-x0 =x1;
-}
-getch();
+	int itr=0;
+	float x0,x1,error;
+	printf("Enter the initial guess: ");
+	scanf("%f",&x0);
+	begin:
+	x1=g(x0);
+	error=fabs(x1-x0)/x1;
+	if(error<=E)
+	{
+		printf("Root= %.3f",x1);
+		printf("\nFunctional value: %.4f",f(x1));
+		printf("\nNumber of steps:  %d",itr);
+	}
+	else
+	{
+		x0=x1;
+		itr++;
+	goto begin;
+	}
+	return 0;
 }
 
