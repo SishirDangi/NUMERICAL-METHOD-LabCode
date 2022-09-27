@@ -1,7 +1,6 @@
 /*Write a program to approximate the functional value at any given 
 x from given n no. of  data using Lagrange’s interpolation. 
 */
-
 #include <stdio.h>
 #include <stdlib.h>
 float Lagrange(int *x, int *y, int xp, int size) {
