@@ -33,6 +33,7 @@ int main()
 		printf("\nFunctional value: %.4f",f(x1));
 		printf("\nNumber of steps:  %d",itr);
 	}
+	
 	else
 	{
 		x0=x1;

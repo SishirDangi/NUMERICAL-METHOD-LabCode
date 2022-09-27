@@ -11,7 +11,6 @@ c. Required number of iterations
 float F(float x){
 	return cos(x)+2*sin(x)+x*x;
 }
-
 int main()
 {
 	int itr=1;

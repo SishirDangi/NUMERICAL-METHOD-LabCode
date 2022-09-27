@@ -11,7 +11,6 @@ c. Required number of iterations
 #define E 0.005
 int  main()
 {
-	
    int itr=1;
    float xl, xm, xu,fxl, fxu, fxm;
    printf("Assume first initial guess:\n");

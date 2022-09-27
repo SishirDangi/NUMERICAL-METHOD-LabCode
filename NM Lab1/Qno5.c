@@ -7,6 +7,7 @@
 float a[100], b[100];
 int main()
 {
+	
 	float x;
 	int n,i;
 	printf("Enter degree of polynomial: \n"); 
