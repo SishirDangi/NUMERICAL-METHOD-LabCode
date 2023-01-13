@@ -1,3 +1,9 @@
+/* Solve the following Laplace equation
+?2u/?x2 + ?2 u/?y2 = 0 
+within 0 = x = 3, 0 = y = 3
+For the rectangular plate given as:
+200,200,100,100
+*/
 #include <stdio.h>
 #include <math.h>
 int main()
