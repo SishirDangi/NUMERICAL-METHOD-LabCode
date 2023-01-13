@@ -1,6 +1,6 @@
 /* Solve the equation 
 d^2f = 3x^2y
-over the square domain 0 = x = 1.5 and 0 = y = 1.5 with f=0 on the boundary. Take (h=0.5)
+over the square domain 0 <= x <= 1.5 and 0 <= y <= 1.5 with f=0 on the boundary. Take (h=0.5)
 */
 #include <stdio.h>
 #include <conio.h>
